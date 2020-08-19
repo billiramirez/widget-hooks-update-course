@@ -24,24 +24,31 @@ const options = [
     value: "red",
   },
   {
-    label: "The color Green",
+    label: "The Color Green",
     value: "green",
   },
   {
-    label: "The shade of blue",
+    label: "The Shade of Blue",
     value: "blue",
   },
 ];
 
 export default () => {
   const [selected, setSelected] = useState(options[0]);
+  const [showDropdown, setShowDropdown] = useState(true);
+
   return (
     <div>
-      <Dropdown
-        options={options}
-        selected={selected}
-        onSelectedChange={setSelected}
-      />
+      <button onClick={() => setShowDropdown(!showDropdown)}>
+        click toogle
+      </button>
+      {showDropdown && (
+        <Dropdown
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      )}
     </div>
   );
 };
